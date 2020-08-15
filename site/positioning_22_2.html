@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Positioning Elements</title>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin-bottom: 15px;
+}
+
+div#container {
+  background-color: #00FFFF;
+  position: relative;
+  top: 60px; 
+}
+p {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+#p1 {
+  background-color: #A52A2A;
+  position: relative; /*aixo NO treurà l'element del document flow per tant ningun altre element li ocupara l'espai si afegeixo un offset i moc l'element de lloc */
+  top: 65px; 
+  left: 65px; /*el browser es pensa que el lloc de dalt de tot segueix ocupat, ja que hem marcat position: relative; */ 
+}
+#p2 {
+  background-color: #DEB887;
+}
+#p3 { /*take its absolute position above everything where the maroon box used to be*/
+  background-color: #5F9EA0;
+  position: absolute; /*absolute position needs a relative or an absoluted parent or an ancestor, it goes up to the chain and checks if <div> has its position set to either absolute or relative. as it doesn't have, it keeps going up til the body element. but body hasn0t either so goes up, til <html> which has its poisition set to relative by default. and that's why the box went all the way on top.that's why we need to ancor one ancestor before the html (the container of the paragraph tag) with the position relative. so that any element contained in that container will then be positioned relative to its edges. as we want box 3 to be relative to the containing div element we need to set the containing div elements position to relative. to try if it works perfect we can move the entire container and see if all the elements move */
+    top: 0;
+  left: 0; 
+}
+#p4 {
+  background-color: #FF7F50;
+}
+
+</style>
+</head>
+<body>
+<h1>Positioning Elements</h1>
+
+<div id="container">
+  <p id="p1"></p>
+  <p id="p2"></p>
+  <p id="p3"></p>
+  <p id="p4"></p>
+</div>
+
+</body>
+</html>
